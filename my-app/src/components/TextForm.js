@@ -5,6 +5,9 @@ import React, { useState } from 'react'
 export default function TextForm(props) {
     const [text, setText] = useState("Enter text here")
 
+    const a = 'HIman'
+    console.log(typeof a)
+
     const onUpCick = () => {
         const newText = text.toUpperCase();
         setText(newText);
@@ -19,7 +22,16 @@ export default function TextForm(props) {
         //console.log("ON change")
         setText(event.target.value)
     }
+    console.log(typeof countWordsabc)
+    const countWordsabc = (str) => {
+        str = str.replace(/(^\s*)|(\s*$)/gi,""); // remove first and last space
+        str = str.replace(/[ ]{2,}/gi," "); //remove multiple space and repace woth one space
+        str = str.replace(/\n /,"\n"); 
+        return str.split(' ').length;
+    }
+    console.log(typeof countWordsabc)
 
+    console.log(typeof countWords)
     function countWords(str) {
         
         str = str.replace(/(^\s*)|(\s*$)/gi,""); // remove first and last space
@@ -28,6 +40,7 @@ export default function TextForm(props) {
         //setText(str)
         return str.split(' ').length;
     }
+    console.log(typeof countWords)
 
     return (
         <>
@@ -44,10 +57,11 @@ export default function TextForm(props) {
             </div>
             <div className="my-3">
                 <h1>Text Summary</h1>
-                <p>{countWords(text)} words and {text.length} characters</p>
+                <p>{countWordsabc(text)} words and {text.length} characters</p>
                 <p>{0.008 * countWords(text)} minutes read</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
+                
             </div>
 
             
