@@ -10,6 +10,11 @@ export default function TextForm(props) {
         setText(newText);
     }
 
+    const onLoCick = () => {
+        const newText = text.toLowerCase();
+        setText(newText);
+    }
+
     const onClickChange = (event) => {
         //console.log("ON change")
         setText(event.target.value)
@@ -32,13 +37,17 @@ export default function TextForm(props) {
                     <label htmlFor="exampleFormControlTextarea1" className="form-label">Example textarea</label>
                     <textarea className="form-control" id="exampleFormControlTextarea1" value={text} onChange={onClickChange} rows="8"></textarea>
                     <div className='my-3'>
-                        <button className='btn btn-primary' onClick={onUpCick}>Uppercase</button>
+                        <button className='btn btn-primary mx-1' onClick={onUpCick}>Uppercase</button>
+                        <button className='btn btn-primary mx-1' onClick={onLoCick}>Lowercase</button>
                     </div>
                 </div>
             </div>
             <div className="my-3">
                 <h1>Text Summary</h1>
                 <p>{countWords(text)} words and {text.length} characters</p>
+                <p>{0.008 * countWords(text)} minutes read</p>
+                <h2>Preview</h2>
+                <p>{text}</p>
             </div>
 
             
