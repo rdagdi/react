@@ -20,6 +20,11 @@ export default function TextForm(props) {
         setText(event.target.value)
     }
 
+    const clear = () => {
+        const newText = ''
+        setText(newText);
+    }
+
     function countWords(str) {
         
         str = str.replace(/(^\s*)|(\s*$)/gi,""); // remove first and last space
@@ -39,18 +44,18 @@ export default function TextForm(props) {
                     <div className='my-3'>
                         <button className='btn btn-primary mx-1' onClick={onUpCick}>Uppercase</button>
                         <button className='btn btn-primary mx-1' onClick={onLoCick}>Lowercase</button>
+                        <button className='btn btn-primary mx-1' onClick={clear}>Clear</button>
                     </div>
                 </div>
             </div>
             <div className="my-3">
+                
                 <h1>Text Summary</h1>
-                <p>{countWords(text)} words and {text.length} characters</p>
+                <p>{countWords(text)} words and {text.length} characters including spaces</p>
                 <p>{0.008 * countWords(text)} minutes read</p>
                 <h2>Preview</h2>
                 <p>{text}</p>
             </div>
-
-            
         </>
     )
 }
